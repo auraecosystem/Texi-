@@ -1,0 +1,10 @@
+@node Introduction
+@chapter Introduction
+@cindex introduction
+@cindex installation
+
+Welcome to the documentation for @value{PROJECT}. This chapter covers basic setup and requirements.
+
+@section Prerequisites
+
+Before running @value{CMD}, ensure you have a POSIX-compliant environment installed. See @ref{Usage} for available flags.
