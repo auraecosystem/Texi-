@@ -1,3 +1,46 @@
+"Upgrading" the **Texinfo** repository can mean two different things depending on what you're trying to do: **pulling the latest changes from GitHub into your local copy**, or **upgrading the local build tools/dependencies** (texinfo and texlive) used to compile the documentation.
+### 1. Update Your Local Copy of the Repository
+If you already cloned the repo and want to fetch the latest commits from the main branch (such as the recent updates from Nov 27, 2026):
+```bash
+cd Texinfo
+git status
+git pull origin main
+
+```
+ * If you have local uncommitted edits and hit a merge conflict, stash your changes first with git stash, run git pull origin main, and then reapply them with git stash pop.
+ * After pulling new changes, rebuild your outputs and clean old build artifacts using the make targets listed in the README:
+   ```bash
+   make clean
+   make info
+   make html
+   make pdf
+   
+   ```
+### 2. Upgrade Your Local Build Tools (texinfo & texlive)
+The repository's README notes that building locally requires texinfo (and texlive for PDF output). If you're running into build errors or missing features, upgrade those system packages using your OS package manager:
+ * **Ubuntu / Debian:**
+   ```bash
+   sudo apt update
+   sudo apt install --only-upgrade texinfo texlive-latex-base texlive-plain-generic
+   
+   ```
+ * **macOS (Homebrew):**
+   ```bash
+   brew update
+   brew upgrade texinfo
+   brew upgrade --cask mactex-no-gui
+   
+   ```
+ * **Fedora:**
+   ```bash
+   sudo dnf upgrade texinfo texlive
+   
+   ```
+### 3. If You Mean Updating the Repo Structure or Workflows
+On the repository page, you can inspect recent changes via History or Activity, and look into folders like .github/ Workflows, .m4, core, doc, docs, my-manual, server, and Bash.sh if you're modifying scripts, build configuration, or manual sources yourself.
+Are you trying to pull the latest code from GitHub, update texinfo/texlive on your machine, or change something inside the repository itself?
+
+
 Your repository (auraecosystem/Texi-) has moved up to 32 commits, and while test/ and cleanup.mk were recently added, the modules/ directory and root Terraform files (main.tf, backend.tf) are still missing from the remote branch, alongside the leftover duplicate documentation folders (docs/, my-manual/, main.texi).
 
 Current Repository Status vs. Target Structure
