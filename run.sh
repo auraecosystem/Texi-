@@ -1,3 +1,4 @@
-./configure
-make
-sudo make install (optionally)
+#!/usr/bin/env bash
+set -euo pipefail
+
+make all
