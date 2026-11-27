@@ -1,0 +1,60 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename hello.info
+@settitle Hello World Manual
+@c %**end of header
+
+@copying
+This is a short example of a Texinfo manual.
+Copyright @copyright{} 2026 Example Author.
+@end copying
+
+@titlepage
+@title Hello World Manual
+@subtitle A Minimal Texinfo Example
+@author Example Author
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top Hello World Manual
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Getting Started::    How to compile and run the program.
+* Command Options::    Available flags and variables.
+@end menu
+
+@node Getting Started
+@chapter Getting Started
+
+To compile a C file using @command{gcc}, pass the source filename and specify an output binary with @option{-o}.
+
+@example
+gcc -Wall -O2 hello.c -o hello
+./hello
+@end example
+
+See @ref{Command Options} for details on modifying behavior.
+
+@node Command Options
+@chapter Command Options
+
+You can customize the output by passing @var{filename} to the @code{process_file} function.
+
+@table @code
+@item --verbose
+Prints detailed execution steps to standard output.
+
+@item --output=@var{file}
+Writes the result to @var{file} instead of the terminal.
+@end table
+
+@bye
