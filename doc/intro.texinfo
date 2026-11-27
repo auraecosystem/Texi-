@@ -1,0 +1,21 @@
+This manual documents the @command{Texinfo} project, combining GNU Texinfo
+documentation sources with an AWS compute and time-to-live (TTL) lifecycle
+module (@code{lmlmxtend-runtime}).
+
+@section Prerequisites
+
+Before building the manual or provisioning infrastructure, ensure the following
+tools are installed:
+
+@itemize @bullet
+@item
+GNU Texinfo (@command{makeinfo}, @command{texi2pdf}) for Info, HTML, and PDF
+output.
+@item
+A TeX distribution such as TeX Live when generating PDF documentation.
+@item
+Terraform (@code{>= 1.5.0}) and configured AWS credentials for infrastructure
+tasks.
+@item
+Python 3.12 with @command{pytest} for running reaper unit tests.
+@end itemize
