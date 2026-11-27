@@ -1,0 +1,24 @@
+# Compiled outputs
+*.info
+*.info-*
+*.html
+*.pdf
+mymanual/
+
+# TeX / texi2pdf temporary files
+*.aux
+*.cp
+*.cps
+*.fn
+*.fns
+*.ky
+*.kys
+*.log
+*.pg
+*.pgs
+*.tmp
+*.toc
+*.tp
+*.tps
+*.vr
+*.vrs
