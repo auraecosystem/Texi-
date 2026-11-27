@@ -13,19 +13,17 @@ name: Anchore Grype vulnerability scan
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
+    paths: [Dockerfile]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
-  schedule:
-    - cron: '40 3 * * 0'
+    branches: [main]
+    paths: [Dockerfile]
 
 permissions:
   contents: read
 
 jobs:
   Anchore-Build-Scan:
-    if: hashFiles('Dockerfile') != ''
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
