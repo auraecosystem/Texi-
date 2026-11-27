@@ -1,7 +1,7 @@
 data "archive_file" "reaper_zip" {
   type        = "zip"
-  source_file = "\${path.module}/reaper/index.py"
-  output_path = "\${path.module}/reaper/index.zip"
+  source_file = "${path.module}/reaper/index.py"
+  output_path = "${path.module}/reaper/index.zip"
 }
 
 data "aws_iam_policy_document" "reaper_assume" {
@@ -34,13 +34,13 @@ data "aws_iam_policy_document" "reaper_ec2" {
 }
 
 resource "aws_iam_role" "reaper" {
-  name               = "\${var.name_prefix}-reaper-role"
+  name               = "${var.name_prefix}-reaper-role"
   assume_role_policy = data.aws_iam_policy_document.reaper_assume.json
   tags               = var.tags
 }
 
 resource "aws_iam_role_policy" "reaper_ec2" {
-  name   = "\${var.name_prefix}-reaper-ec2"
+  name   = "${var.name_prefix}-reaper-ec2"
   role   = aws_iam_role.reaper.id
   policy = data.aws_iam_policy_document.reaper_ec2.json
 }
@@ -51,7 +51,7 @@ resource "aws_iam_role_policy_attachment" "reaper_basic_logs" {
 }
 
 resource "aws_lambda_function" "reaper" {
-  function_name    = "\${var.name_prefix}-ttl-reaper"
+  function_name    = "${var.name_prefix}-ttl-reaper"
   role             = aws_iam_role.reaper.arn
   handler          = "index.handler"
   runtime          = "python3.12"
@@ -69,7 +69,7 @@ resource "aws_lambda_function" "reaper" {
 }
 
 resource "aws_cloudwatch_event_rule" "reaper_hourly" {
-  name                = "\${var.name_prefix}-reaper-hourly"
+  name                = "${var.name_prefix}-reaper-hourly"
   description         = "Trigger TTL reaper every hour"
   schedule_expression = "rate(1 hour)"
   tags                = var.tags
