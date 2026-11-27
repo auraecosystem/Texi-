@@ -1,0 +1,14 @@
+The root configuration wires a Hub VPC and private subnets to the
+@code{lmlmxtend-runtime} module, which provisions compute resources, VPC
+endpoints, and an hourly TTL reaper.
+
+@section Networking and Endpoints
+
+Private subnets connect to AWS services without requiring public internet
+egress by using PrivateLink interface endpoints (SSM, ECR, CloudWatch Logs) and
+an S3 gateway endpoint.
+
+@section TTL Reaper
+
+An hourly Amazon EventBridge schedule invokes a Python 3.12 AWS Lambda handler
+that inspects resource tags and cleans up expired environments.
