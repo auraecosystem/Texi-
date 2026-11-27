@@ -1,0 +1,4 @@
+make all
+git init
+git add .
+git commit -m "Initial Texinfo manual scaffold"
