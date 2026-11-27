@@ -1,3 +1,126 @@
+Based on the build_structure.md file in the **Texinfo** repository (inside **doc**), here are ready-to-use starter files and setup commands aligned with the target repository structure described on the page.
+### 1. Root Makefile
+Supports generating Texinfo outputs (info, html, pdf, all) and cleaning build artifacts:
+```makefile
+TEXI_SRC := doc/mymanual.texi
+INFO_OUT := doc/mymanual.info
+HTML_DIR := doc/mymanual_html
+PDF_OUT  := doc/mymanual.pdf
+
+.PHONY: all info html pdf clean
+
+all: info html pdf
+
+info: $(INFO_OUT)
+
+$(INFO_OUT): $(TEXI_SRC) doc/*.texi doc/include/*.texi
+	makeinfo --no-split -o $(INFO_OUT) $(TEXI_SRC)
+
+html:
+	makeinfo --html -o $(HTML_DIR) $(TEXI_SRC)
+
+pdf: $(PDF_OUT)
+
+$(PDF_OUT): $(TEXI_SRC) doc/*.texi doc/include/*.texi
+	texi2pdf -o $(PDF_OUT) $(TEXI_SRC)
+
+clean:
+	rm -rf $(INFO_OUT) $(HTML_DIR) $(PDF_OUT) *.aux *.cp *.cps *.fn *.fns *.ky *.kys *.log *.pg *.pgs *.toc *.tp *.tps *.vr *.vrs
+
+```
+### 2. Starter doc/mymanual.texi
+A minimal multi-file GNU Texinfo entry point matching the layout referenced in build_structure.md:
+```texinfo
+\input texinfo
+@setfilename mymanual.info
+@settitle Texinfo Project Manual
+
+@include version.texi
+@include include/macros.texi
+
+@titlepage
+@title Texinfo Project Manual
+@subtitle Version @value{VERSION} (@value{UPDATED})
+@author Seriki Walter Yakub
+@page
+@vskip 0pt plus 1filll
+@include include/fdl.texi
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top Texinfo Project Manual
+@end ifnottex
+
+@menu
+* Introduction::
+* Usage::
+* Infrastructure::
+@end menu
+
+@node Introduction
+@chapter Introduction
+@include intro.texi
+
+@node Usage
+@chapter Usage
+@include usage.texi
+
+@node Infrastructure
+@chapter Infrastructure
+@include infrastructure.texi
+
+@bye
+
+```
+### 3. Starter doc/version.texi & doc/include/macros.texi
+**doc/version.texi**
+```texinfo
+@set VERSION 0.1.0
+@set UPDATED November 2026
+
+```
+**doc/include/macros.texi**
+```texinfo
+@macro cmd{arg}
+@code{\arg\}
+@end macro
+
+```
+### 4. GitHub Actions Workflow (.github/workflows/build-docs.yml)
+Automates Texinfo documentation builds, checks, and tests on push:
+```yaml
+name: Build Docs and Run Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Texinfo and TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texinfo texlive-latex-base texlive-plain-generic
+
+      - name: Build documentation and clean artifacts
+        run: |
+          make all
+          make clean
+
+```
+Since your prompt simply says **"Generate"**, what specific file, script, or configuration would you like me to generate next (for example, intro.texi, usage.texi, infrastructure.texi, cleanup.mk, or Terraform files like main.tf and backend.tf)?
+
+
 "Upgrading" the **Texinfo** repository can mean two different things depending on what you're trying to do: **pulling the latest changes from GitHub into your local copy**, or **upgrading the local build tools/dependencies** (texinfo and texlive) used to compile the documentation.
 ### 1. Update Your Local Copy of the Repository
 If you already cloned the repo and want to fetch the latest commits from the main branch (such as the recent updates from Nov 27, 2026):
