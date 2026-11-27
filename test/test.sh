@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 #
 # This file includes tests to validate the behavior of the run-with-cleanup method
 
