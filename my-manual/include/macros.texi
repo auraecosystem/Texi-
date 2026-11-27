@@ -1,2 +1,4 @@
 @set PROJECT My Project
 @set CMD @command{mytool}
+
+@set VERSION 1.0.0
