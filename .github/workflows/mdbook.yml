@@ -27,6 +27,7 @@ concurrency:
 jobs:
   # Build job
   build:
+    if: hashFiles('book.toml') != ''
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.36
