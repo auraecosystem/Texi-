@@ -30,6 +30,10 @@ make test
 
 This runs the cleanup-macro shell tests and the TTL reaper unit tests.
 
+`./install.sh` checks the required local documentation tools; it does not clone
+or modify external repositories. `./run.sh` builds Info and HTML, while
+`./Bash.sh` runs the full local build and test sequence.
+
 ## Terraform runtime
 
 The root Terraform configuration provisions a VPC, private subnets, a private
