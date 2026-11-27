@@ -1,3 +1,4 @@
+make all && make clean
 make all
 git init
 git add .
