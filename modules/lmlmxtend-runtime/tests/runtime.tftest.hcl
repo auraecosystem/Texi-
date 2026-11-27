@@ -27,7 +27,7 @@ mock_provider "aws" {
 }
 
 run "validates_default_runtime_plan" {
-  command = plan
+  command = apply
 
   variables {
     name_prefix             = "texinfo-dev"
