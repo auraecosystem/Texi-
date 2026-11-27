@@ -1,0 +1,4 @@
+@node Command Options
+@chapter Command Options
+
+Use @option{--help} to print usage instructions. See @ref{Introduction} for setup.
