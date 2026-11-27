@@ -3,7 +3,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  name_prefix = "\${var.project_name}-\${var.environment}"
+  name_prefix = "${var.project_name}-${var.environment}"
   common_tags = merge(var.tags, {
     Project     = var.project_name
     Environment = var.environment
@@ -17,7 +17,7 @@ resource "aws_vpc" "hub" {
   enable_dns_support   = true
 
   tags = merge(local.common_tags, {
-    Name = "\${local.name_prefix}-hub-vpc"
+    Name = "${local.name_prefix}-hub-vpc"
   })
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "private" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = merge(local.common_tags, {
-    Name = "\${local.name_prefix}-private-\${count.index + 1}"
+    Name = "${local.name_prefix}-private-${count.index + 1}"
   })
 }
 
@@ -37,7 +37,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.hub.id
 
   tags = merge(local.common_tags, {
-    Name = "\${local.name_prefix}-private"
+    Name = "${local.name_prefix}-private"
   })
 }
 
