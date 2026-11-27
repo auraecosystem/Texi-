@@ -1,0 +1,6 @@
+make all
+git init
+git add .
+git commit -m "Initial Texinfo manual scaffold"
+mkdir gcc-build && cd gcc-build
+../gcc/configure --disable-bootstrap --enable-languages=c
