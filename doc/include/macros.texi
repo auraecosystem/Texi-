@@ -1,0 +1,23 @@
+@c --- Project Variables (call with @value{NAME}) ---
+@set PROJECT NovaCompiler
+@set CMD @command{novac}
+@set REPO_URL https://github.com
+
+@c --- Custom Macros (call with @name{arg}) ---
+@c Creates a styled warning note
+@macro warning{text}
+@quotation Warning
+\text\
+@end quotation
+@end macro
+
+@c Formats a configuration key consistently
+@macro cfgkey{name}
+@code{\name\}
+@end macro
+
+@c Adds a concept index entry and bolds the term in-place
+@macro defterm{term}
+@cindex \term\
+@strong{\term\}
+@end macro
