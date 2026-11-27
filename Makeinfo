@@ -1,4 +1,4 @@
-MANUAL = mymanual
+MANUAL = mymanual 
 DOCDIR = doc
 SRC = $(DOCDIR)/$(MANUAL).texi
 INCLUDES = -I $(DOCDIR) -I $(DOCDIR)/include
