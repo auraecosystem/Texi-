@@ -16,7 +16,7 @@ This is the retained example manual under @file{my-manual/}.
 * Introduction::
 * Usage::
 * Command Options::
-* GNU Free Documentation License::
+* License Placeholder::
 @end menu
 
 @include intro.texi
