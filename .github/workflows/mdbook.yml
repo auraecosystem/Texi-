@@ -5,12 +5,9 @@
 name: Deploy mdBook site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [main]
+    paths: [book.toml, src/**]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -27,7 +24,6 @@ concurrency:
 jobs:
   # Build job
   build:
-    if: hashFiles('book.toml') != ''
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.36
