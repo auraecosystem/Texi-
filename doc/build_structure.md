@@ -1,4 +1,28 @@
-Here is the complete, final file tree for your repository, integrating your GNU Texinfo manual, GitHub Actions CI/CD pipeline, root Terraform configuration, and the lmlmxtend-runtime module with its test suites.
+Your repository (auraecosystem/Texi-) has moved up to 32 commits, and while test/ and cleanup.mk were recently added, the modules/ directory and root Terraform files (main.tf, backend.tf) are still missing from the remote branch, alongside the leftover duplicate documentation folders (docs/, my-manual/, main.texi).
+
+Current Repository Status vs. Target Structure
+
+• Missing Terraform Module. The modules/lmlmxtend-runtime/ folder, main.tf, and backend.tf have not been pushed to main yet (you may have created them locally without committing or pushed to a different branch).
+• New Root Additions. You added test/ and cleanup.mk at the root level alongside .m4, core, server, install.sh, and run.sh.
+• Remaining Duplicate Folders. doc/, docs/, my-manual/, main.texi, and Bash.sh are still sitting side by side in the root directory, which risks path conflicts in Makefile and cleanup.mk.
+
+Commands to Sync and Clean Up Your Repo
+
+Run these steps in your local Texi- directory to verify your Git status, remove the duplicate documentation directories, and push the missing Terraform files:
+1. Check for untracked or unpushed files:bash
+git status
+git branch -a
+Use code with caution.
+2. Remove the redundant documentation folders and stray script:bash
+git rm -rf my-manual docs main.texi Bash.sh
+Use code with caution.
+3. Ensure modules/lmlmxtend-runtime/, main.tf, and backend.tf are staged and committed:bash
+git add modules/ main.tf backend.tf .github/ Makefile cleanup.mk .gitignore
+git commit -m "Add lmlmxtend-runtime Terraform module and clean up duplicate docs"
+git push origin main
+Use code with caution.
+Would you like me to inspect the contents of cleanup.mk, test/, or your Actions run logs if any workflow check is currently failing on GitHub?
+
 
 Complete Repository File Tree
 
