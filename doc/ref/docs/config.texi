@@ -1,0 +1,7 @@
+@menu
+* Introduction::                Overview and installation.
+* Usage::                       Command-line options and examples.
+* Configuration::               Customizing settings and environment variables.
+* GNU Free Documentation License::  License terms for this manual.
+* Concept Index::               Index of concepts and commands.
+@end menu
