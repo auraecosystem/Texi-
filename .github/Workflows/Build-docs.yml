@@ -1,0 +1,57 @@
+name: Build and Deploy Texinfo Manual
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Sets permissions for deploying to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Texinfo and TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texinfo texlive-latex-base texlive-fonts-recommended
+
+      - name: Build Info, HTML, and PDF
+        run: |
+          make info
+          make html
+          make pdf
+
+      - name: Upload Info and PDF Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-manuals
+          path: |
+            *.info
+            *.pdf
+
+      - name: Upload HTML for GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mymanual_html/
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
