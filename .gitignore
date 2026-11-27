@@ -65,3 +65,11 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Generated PDFs and legacy manual outputs
+/mymanual.pdf
+/multi.pdf
+/my-manual/mymanual-legacy.info
+/my-manual/mymanual-legacy.info-*
+/my-manual/mymanual-legacy_html/
+/my-manual/mymanual-legacy.pdf
