@@ -1,0 +1,22 @@
+@node Usage
+@chapter Usage
+@cindex usage
+@cindex command-line options
+
+You can invoke @value{CMD} from your terminal by passing an input file and optional flags.
+
+@example
+mytool --verbose input.txt
+@end example
+
+@section Common Flags
+
+@table @code
+@item --help
+@cindex @option{--help}
+Displays usage information and exits.
+
+@item --version
+@cindex @option{--version}
+Prints version @value{VERSION} and exits.
+@end table
