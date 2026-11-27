@@ -1,11 +1,17 @@
-# Compiled outputs
-*.info
-*.info-*
-*.html
-*.pdf
-mymanual/
+# GNU Texinfo build outputs (keep source .texi/.texinfo files tracked)
+/mymanual.info
+/mymanual.info-*
+/mymanual_html/
+/multi.info
+/multi.info-*
+/multi_html/
+/doc/*.info
+/doc/*.info-*
+/doc/*_html/
+/doc/*.pdf
+/docs/book.pdf
 
-# TeX / texi2pdf temporary files
+# TeX and texi2pdf intermediate files
 *.aux
 *.cp
 *.cps
@@ -22,3 +28,40 @@ mymanual/
 *.tps
 *.vr
 *.vrs
+
+# Terraform working directories and generated state
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+*.tfplan.*
+
+# Terraform variable files may contain credentials or environment-specific values.
+# Keep explicitly named examples trackable.
+*.tfvars
+*.tfvars.json
+!*.example.tfvars
+!*.example.tfvars.json
+
+# Generated Lambda deployment archive
+/modules/lmlmxtend-runtime/reaper/index.zip
+
+# Python caches and test/coverage output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
