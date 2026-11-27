@@ -51,10 +51,10 @@ resource "aws_route_table_association" "private" {
 module "runtime" {
   source = "./modules/lmlmxtend-runtime"
 
-  name_prefix              = local.name_prefix
-  vpc_id                   = aws_vpc.hub.id
-  private_subnet_ids       = aws_subnet.private[*].id
-  private_route_table_ids  = [aws_route_table.private.id]
-  ttl_hours                = var.ttl_hours
-  tags                     = local.common_tags
+  name_prefix             = local.name_prefix
+  vpc_id                  = aws_vpc.hub.id
+  private_subnet_ids      = aws_subnet.private[*].id
+  private_route_table_ids = [aws_route_table.private.id]
+  ttl_hours               = var.ttl_hours
+  tags                    = local.common_tags
 }
