@@ -1,8 +1,7 @@
-\input texinfo   @c -*-texinfo-*-
-@c %**start of header
+\input texinfo
+@c -*-texinfo-*-
 @setfilename multi.info
 @settitle Multi-File Manual
-@c %**end of header
 
 @ifnottex
 @node Top
@@ -11,10 +10,18 @@
 
 @menu
 * Introduction::       Overview of the project.
+* Usage::              Documentation build instructions.
 * Command Options::    Available flags and settings.
 @end menu
 
-@include intro.texi
-@include options.texi
+@node Introduction
+@chapter Introduction
+@include doc/intro.texinfo
+
+@node Usage
+@chapter Usage
+@include doc/usage.texinfo
+
+@include my-manual/options.texi
 
 @bye
