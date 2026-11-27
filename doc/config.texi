@@ -1,0 +1,28 @@
+@node Configuration
+@chapter Configuration
+@cindex configuration
+
+You can configure @value{PROJECT} by placing a @defterm{manifest file} named @file{nova.toml} in your project root.
+
+@menu
+* Config Keys::        Supported fields in nova.toml.
+* Environment::        Environment variable overrides.
+@end menu
+
+@node Config Keys
+@section Config Keys
+
+@table @code
+@item @cfgkey{opt_level}
+Sets the optimization tier (`0` to `3`).
+
+@item @cfgkey{target_arch}
+Overrides the default host architecture.
+@end table
+
+@warning{Setting @cfgkey{opt_level} to @code{3} significantly increases compile times.}
+
+@node Environment
+@section Environment
+
+Any key in @file{nova.toml} can be overridden by prefixing its uppercase name with @code{NOVAC_}.
