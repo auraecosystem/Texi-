@@ -19,3 +19,25 @@ clean:
 	rm -f *.aux *.cp *.cps *.fn *.fns *.ky *.log *.pg *.toc *.tp *.vr
 
 .PHONY: all info html pdf clean
+
+# This file includes example usage and tests for the 'run-with-cleanup' call-able function.
+
+.PHONY: test test-success test-failure main cleanup
+
+-include cleanup.mk
+
+test:
+    test.sh
+
+main:
+    echo main
+    $(if $(SHOULD_FAIL),false,true)
+
+cleanup:
+    echo cleanup
+
+test-success:
+    $(call run-with-cleanup, $(MAKE) main, $(MAKE) cleanup)
+
+test-failure:
+    $(call run-with-cleanup, SHOULD_FAIL=1 $(MAKE) main, $(MAKE) cleanup)
