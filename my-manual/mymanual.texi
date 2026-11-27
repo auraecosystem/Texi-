@@ -1,0 +1,27 @@
+\input texinfo
+@c -*-texinfo-*-
+@setfilename mymanual-legacy.info
+@settitle Legacy Project Manual
+@include include/macros.texi
+
+@copying
+This is the retained example manual under @file{my-manual/}.
+@end copying
+
+@node Top
+@top Legacy Project Manual
+@insertcopying
+
+@menu
+* Introduction::
+* Usage::
+* Command Options::
+* GNU Free Documentation License::
+@end menu
+
+@include intro.texi
+@include Usage.texi
+@include options.texi
+@include include/Fdl.texi
+
+@bye
