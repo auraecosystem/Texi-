@@ -5,7 +5,7 @@ locals {
 }
 
 resource "aws_security_group" "vpce" {
-  name_prefix = "\${var.name_prefix}-vpce-"
+  name_prefix = "${var.name_prefix}-vpce-"
   description = "Allow HTTPS traffic from runtime workloads to interface endpoints"
   vpc_id      = var.vpc_id
 
@@ -17,7 +17,7 @@ resource "aws_security_group" "vpce" {
   }
 
   tags = merge(var.tags, {
-    Name = "\${var.name_prefix}-vpce-sg"
+    Name = "${var.name_prefix}-vpce-sg"
   })
 }
 
@@ -25,14 +25,14 @@ resource "aws_vpc_endpoint" "interface" {
   for_each = local.interface_services
 
   vpc_id              = var.vpc_id
-  service_name        = "com.amazonaws.\${data.aws_region.current.name}.\${each.key}"
+  service_name        = "com.amazonaws.${data.aws_region.current.name}.${each.key}"
   vpc_endpoint_type   = "Interface"
   subnet_ids          = var.private_subnet_ids
   security_group_ids  = [aws_security_group.vpce.id]
   private_dns_enabled = true
 
   tags = merge(var.tags, {
-    Name = "\${var.name_prefix}-\${replace(each.key, ".", "-")}-vpce"
+    Name = "${var.name_prefix}-${replace(each.key, ".", "-")}-vpce"
   })
 }
 
@@ -48,6 +48,6 @@ resource "aws_vpc_endpoint" "s3" {
   route_table_ids   = var.private_route_table_ids
 
   tags = merge(var.tags, {
-    Name = "\${var.name_prefix}-s3-vpce"
+    Name = "${var.name_prefix}-s3-vpce"
   })
 }
