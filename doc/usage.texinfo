@@ -1,0 +1,15 @@
+Documentation targets are orchestrated from the repository root using
+@file{Makefile}.
+
+@section Build Targets
+
+@table @code
+@item make info
+Generates the Info documentation file.
+@item make html
+Generates HTML pages from the Texinfo sources.
+@item make pdf
+Compiles a PDF manual via @command{texi2pdf}.
+@item make clean
+Removes generated build artifacts and temporary TeX files.
+@end table
